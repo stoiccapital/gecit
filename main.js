@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.pillar, .faq-item');
+    const animatedElements = document.querySelectorAll('.problem-item, .outcome-card, .timeline-step, .testimonial-card, .pricing-card');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -125,7 +125,62 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         });
     });
+    
+    // Contact form handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Bitte fülle alle Felder aus.');
+                return;
+            }
+            
+            // Here you would typically send the data to your server
+            // For now, we'll just show a success message
+            alert('Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.');
+            this.reset();
+        });
+    }
 });
+
+// FAQ Toggle Function
+function toggleFAQ(button) {
+    const faqItem = button.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = button.querySelector('.faq-icon');
+    
+    // Close all other FAQ items
+    const allFaqItems = document.querySelectorAll('.faq-item');
+    allFaqItems.forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+            const otherAnswer = item.querySelector('.faq-answer');
+            const otherIcon = item.querySelector('.faq-icon');
+            otherAnswer.classList.remove('active');
+            otherIcon.textContent = '+';
+        }
+    });
+    
+    // Toggle current FAQ item
+    faqItem.classList.toggle('active');
+    answer.classList.toggle('active');
+    
+    // Update icon
+    if (faqItem.classList.contains('active')) {
+        icon.textContent = '×';
+    } else {
+        icon.textContent = '+';
+    }
+}
 
 // Add CSS for ripple effect
 const style = document.createElement('style');
@@ -149,6 +204,34 @@ style.textContent = `
             transform: scale(4);
             opacity: 0;
         }
+    }
+    
+    /* FAQ animations */
+    .faq-answer {
+        transition: all 0.3s ease;
+    }
+    
+    .faq-icon {
+        transition: transform 0.3s ease;
+    }
+    
+    /* Smooth animations for all interactive elements */
+    .problem-item,
+    .outcome-card,
+    .timeline-step,
+    .testimonial-card,
+    .pricing-card {
+        transition: all 0.3s ease;
+    }
+    
+    /* Trust badges animation */
+    .trust-badge {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .trust-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 `;
 document.head.appendChild(style); 

@@ -1,72 +1,96 @@
-# Männer-RESET Landing Page
+# Reset Session Landing Page
 
-A modern, responsive landing page for the Männer-RESET program - a 6-week transformation program focused on clarity, energy, and focus for men.
+Eine moderne, responsive Landing Page für die Reset Session - ein Coaching-Programm für radikale Klarheit im Leben und Business.
 
 ## Features
 
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Modern UI**: Clean, professional design with smooth animations
-- **Interactive Navigation**: Fixed header with smooth scrolling
-- **Mobile-First**: Hamburger menu for mobile devices
-- **Performance Optimized**: Fast loading with optimized assets
-- **Accessibility**: Semantic HTML and keyboard navigation support
+- **Responsive Design**: Optimiert für Desktop, Tablet und Mobile
+- **Moderne UI**: Sauberes, professionelles Design mit grüner Farbpalette
+- **Interaktive Navigation**: Sticky Header mit smooth scrolling
+- **Mobile-First**: Hamburger-Menü für mobile Geräte
+- **FAQ Accordion**: Interaktive FAQ-Sektion mit Toggle-Funktionalität
+- **Kontaktformular**: Funktionales Kontaktformular mit Validierung
+- **Performance Optimiert**: Schnelle Ladezeiten mit optimierten Assets
+- **Accessibility**: Semantisches HTML und Keyboard-Navigation
 
-## File Structure
+## Seitenstruktur
 
 ```
-├── index.html          # Main HTML file
-├── main.css           # All styling and responsive design
-├── main.js            # Interactive functionality
-└── README.md          # Project documentation
+├── index.html          # Haupt-HTML-Datei
+├── main.css           # Komplettes Styling und responsive Design
+├── main.js            # Interaktive Funktionalität
+└── README.md          # Projektdokumentation
 ```
+
+## Sektionen
+
+1. **Hero** - Hauptheadline und Call-to-Action
+2. **Probleme & Lösung** - Pain-Points und Lösungsansatz
+3. **Outcomes** - Was der Kunde bekommt (4 Karten)
+4. **Programm** - Ablauf der Reset Session (Timeline)
+5. **Über mich** - Founder/Authority Section
+6. **Ergebnisse** - Testimonials und Social Proof
+7. **Preise** - Pricing-Karten (Reset Session & Mentoring)
+8. **FAQ** - Häufige Fragen (Accordion)
+9. **Booking** - Calendly-Integration (Placeholder)
+10. **Kontakt** - Kontaktformular
+11. **Footer** - Links und Copyright
 
 ## Setup
 
-1. Clone or download the project files
-2. Open `index.html` in your web browser
-3. The page will load with all styling and functionality
+1. Projekt-Dateien klonen oder herunterladen
+2. `index.html` im Webbrowser öffnen
+3. Die Seite lädt mit allen Styles und Funktionen
 
-## Customization
+## Anpassungen
 
-### Colors
-The main color scheme uses:
-- Primary Blue: `#3b82f6`
-- Dark Blue: `#1d4ed8`
+### Farben
+Die Hauptfarbpalette verwendet:
+- Primär Grün: `#10b981`
+- Dunkel Grün: `#059669`
 - Text: `#1a1a1a`
-- Light Gray: `#f8fafc`
+- Hell Grau: `#f7fafc`
 
 ### Content
-To update the content:
-1. Edit the text in `index.html`
-2. Update the Instagram link in the contact section
-3. Modify any images or icons as needed
+Um den Inhalt zu aktualisieren:
+1. Text in `index.html` bearbeiten
+2. Calendly-URL in der Booking-Sektion aktualisieren
+3. Bilder oder Icons nach Bedarf anpassen
 
 ### Styling
-All styling is contained in `main.css`:
-- Typography and spacing
-- Color schemes
-- Responsive breakpoints
-- Animations and transitions
+Alle Styles sind in `main.css` enthalten:
+- Typografie und Abstände
+- Farbschemata
+- Responsive Breakpoints
+- Animationen und Übergänge
 
 ## Browser Support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+- Chrome (neueste Version)
+- Firefox (neueste Version)
+- Safari (neueste Version)
+- Edge (neueste Version)
+- Mobile Browser (iOS Safari, Chrome Mobile)
 
 ## Performance
 
-- Optimized for fast loading
-- Minimal external dependencies
-- Efficient CSS and JavaScript
-- Responsive images and assets
+- Optimiert für schnelle Ladezeiten
+- Minimale externe Abhängigkeiten
+- Effizientes CSS und JavaScript
+- Responsive Bilder und Assets
 
-## Contact
+## Technische Details
 
-For questions about the Männer-RESET program, contact via Instagram as indicated on the landing page.
+- **HTML5**: Semantische Struktur
+- **CSS3**: Moderne Styling-Techniken mit CSS-Variablen
+- **Vanilla JavaScript**: Keine externen Frameworks
+- **Responsive**: Mobile-first Ansatz
+- **Accessibility**: WCAG-konform
+
+## Kontakt
+
+Für Fragen zur Reset Session, nutze das Kontaktformular auf der Landing Page.
 
 ---
 
-© 2024 Männer-RESET. All rights reserved. 
+© 2024 Reset Session. Alle Rechte vorbehalten. 
