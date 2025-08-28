@@ -1,41 +1,35 @@
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.querySelector('.nav-links');
+// FAQ Toggle Function
+function toggleFAQ(button) {
+    const faqItem = button.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = button.querySelector('.faq-icon');
     
-    if (navToggle && navLinks) {
-        navToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            
-            // Animate hamburger menu
-            const spans = navToggle.querySelectorAll('span');
-            spans.forEach((span, index) => {
-                if (navLinks.classList.contains('active')) {
-                    if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    if (index === 1) span.style.opacity = '0';
-                    if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
-                } else {
-                    span.style.transform = 'none';
-                    span.style.opacity = '1';
-                }
-            });
-        });
-        
-        // Close mobile menu when clicking on a link
-        const links = navLinks.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                const spans = navToggle.querySelectorAll('span');
-                spans.forEach(span => {
-                    span.style.transform = 'none';
-                    span.style.opacity = '1';
-                });
-            });
-        });
+    // Close all other FAQ items
+    const allFaqItems = document.querySelectorAll('.faq-item');
+    allFaqItems.forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+            const otherAnswer = item.querySelector('.faq-answer');
+            const otherIcon = item.querySelector('.faq-icon');
+            otherAnswer.classList.remove('active');
+            otherIcon.textContent = '+';
+        }
+    });
+    
+    // Toggle current FAQ item
+    faqItem.classList.toggle('active');
+    answer.classList.toggle('active');
+    
+    // Update icon
+    if (faqItem.classList.contains('active')) {
+        icon.textContent = '×';
+    } else {
+        icon.textContent = '+';
     }
-    
-    // Smooth scrolling for anchor links
+}
+
+// Smooth scrolling for anchor links
+document.addEventListener('DOMContentLoaded', function() {
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -44,30 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
     
-    // Add scroll effect to navigation
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = 'none';
-        }
-    });
-    
-    // Intersection Observer for animations
+    // Add scroll animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -83,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.problem-item, .outcome-card, .timeline-step, .testimonial-card, .pricing-card');
+    const animatedElements = document.querySelectorAll('.problem-card, .outcome-card, .timeline-step, .result-card, .pricing-card');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -150,37 +129,37 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
-});
-
-// FAQ Toggle Function
-function toggleFAQ(button) {
-    const faqItem = button.parentElement;
-    const answer = faqItem.querySelector('.faq-answer');
-    const icon = button.querySelector('.faq-icon');
     
-    // Close all other FAQ items
-    const allFaqItems = document.querySelectorAll('.faq-item');
-    allFaqItems.forEach(item => {
-        if (item !== faqItem) {
-            item.classList.remove('active');
-            const otherAnswer = item.querySelector('.faq-answer');
-            const otherIcon = item.querySelector('.faq-icon');
-            otherAnswer.classList.remove('active');
-            otherIcon.textContent = '+';
+    // Add smooth scrolling to buttons
+    const bookingButtons = document.querySelectorAll('.btn-primary');
+    bookingButtons.forEach(button => {
+        if (button.textContent.includes('buchen') || button.textContent.includes('Erstgespräch')) {
+            button.addEventListener('click', function() {
+                const bookingSection = document.querySelector('.booking');
+                if (bookingSection) {
+                    bookingSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         }
     });
     
-    // Toggle current FAQ item
-    faqItem.classList.toggle('active');
-    answer.classList.toggle('active');
-    
-    // Update icon
-    if (faqItem.classList.contains('active')) {
-        icon.textContent = '×';
-    } else {
-        icon.textContent = '+';
+    // Add program button functionality
+    const programButton = document.querySelector('.btn-secondary');
+    if (programButton && programButton.textContent.includes('Programm')) {
+        programButton.addEventListener('click', function() {
+            const programSection = document.querySelector('.program');
+            if (programSection) {
+                programSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     }
-}
+});
 
 // Add CSS for ripple effect
 const style = document.createElement('style');
@@ -216,22 +195,37 @@ style.textContent = `
     }
     
     /* Smooth animations for all interactive elements */
-    .problem-item,
+    .problem-card,
     .outcome-card,
     .timeline-step,
-    .testimonial-card,
+    .result-card,
     .pricing-card {
         transition: all 0.3s ease;
     }
     
     /* Trust badges animation */
-    .trust-badge {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .trust-item {
+        transition: transform 0.3s ease;
     }
     
-    .trust-badge:hover {
+    .trust-item:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Card hover effects */
+    .problem-card:hover,
+    .outcome-card:hover,
+    .result-card:hover {
+        transform: translateY(-5px);
+        border-color: #16A34A;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .pricing-card.featured:hover {
+        transform: translateY(-5px) scale(1.02);
     }
 `;
 document.head.appendChild(style); 
